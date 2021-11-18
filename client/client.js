@@ -17,13 +17,13 @@ form.addEventListener("submit",e=>{
 
     if(message === "") return
     displayMessage(message);
-    socket.emit('send-message',message,room);
+    socket.emit('message:send',message,room);
     messageInput.value = "";
 })
 
 joinRoomButton.addEventListener("click", ()=> {
     const room = roomInput.value;
-    socket.emit('join-room',room,message =>{
+    socket.emit('room:join',room,message =>{
         displayMessage(message);
     });
 })
